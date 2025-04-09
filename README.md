@@ -1,0 +1,1 @@
+# `ps-for-code-cases` é o repositório criado para salvar o Case feito durante o Processo Seletivo 2025.01 da For_Code.
