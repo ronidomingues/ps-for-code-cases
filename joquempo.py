@@ -41,7 +41,7 @@ class Joquempo:
     def __score(self) -> None:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(f"{self.CYAN}=" * 80)
-        print(" " * 42 + "PLACAR FINAL")
+        print(" " * 32 + "PLACAR FINAL")
         print("=" * 80)
 
         print(f"\nRodadas Jogadas: {self.score['rounds']}\n")
@@ -64,7 +64,7 @@ class Joquempo:
         draw = player = machine = 0
         self.__type_message(self.machine_message)
         self.player = input(f"{self.MAGENTA}\n 👤 Seu nome: {self.WHITE}").strip()
-        self.__type_message(f"{self.RED}\n\tBem vindo, {self.MAGENTA}HUMANO!{self.RED} Que comecem os Jogos!\n{self.RESET}")
+        self.__type_message(f"{self.RED}\n\t👾 Bem vindo, {self.MAGENTA}HUMANO!{self.RED} Que comecem os Jogos!\n{self.RESET}")
         moves = {self.player:[], self.machine_name:[]}
         time.sleep(1)
         while playing:
@@ -75,14 +75,20 @@ class Joquempo:
                     raise ValueError(f"\n\n⛔ Movimento inválido! Escolha 1 (Pedra), 2 (Papel) ou 3 (Tesoura).\n\n")
                 else:
                     machine_move = random.choice((1,2,3))
+                    self.__type_message(f"{self.RED}\n\t👾 Hummm...\n\n\tO {self.MAGENTA}HUMANO{self.RED} laçou {self.GRAY}{self.elements[player_move]}{self.RED} e...{self.RESET}\n")
+                    time.sleep(3)
+                    self.__type_message(f"\n\t{self.GREEN}{self.machine_name}{self.RED} lançou {self.GRAY}{self.elements[machine_move]}!{self.RESET}\n")
                     if player_move == machine_move:
                         draw += 1
+                        self.__type_message(f"\n\n\t\t{self.RED}👾 RAIOS ⚡⚡⚡💢💢💢\n\n")
                         self.__type_message(f"{self.YELLOW}\n\tEmpate entre {self.player} e {self.machine_name}, pois {self.elements[player_move]} é igual a {self.elements[machine_move]}")
                     elif self.power[player_move] == machine_move:
                         player += 1
+                        self.__type_message(f"\n\n\t\t{self.RED}👾 RAIOS ⚡⚡⚡💢💢💢\n\n")
                         self.__type_message(f"{self.YELLOW}\n\t Vitória de {self.player}, pois {self.elements[player_move]} mata {self.elements[machine_move]}")
                     else:
                         machine += 1
+                        self.__type_message(f"\n\n\t\t{self.RED}👾 MUAAAAHAHA\n\t\t👾 EU AVISEI! SINTA O GOSTO DA DERROTA! 👾👾\n\n")
                         self.__type_message(f"{self.YELLOW}\n\t Vitória de {self.machine_name}, pois {self.elements[machine_move]} mata {self.elements[player_move]}")
                     moves[self.player].append(self.elements[player_move])
                     moves[self.machine_name].append(self.elements[machine_move])
