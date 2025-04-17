@@ -1,7 +1,7 @@
 import re
 import os
 
-def elephant(message:str = "3 Cachorros") -> None:
+def elephant(message:str = "3 elefantes") -> None:
     try:
         match_numb = re.search(r"\d+", message.strip())
         match_str = re.sub(r"^\d+\s+", "", message.strip())
